@@ -1,7 +1,6 @@
 // From the Fusion tutorial:
 // https://doc.photonengine.com/fusion/current/tutorials/host-mode-basics/2-setting-up-a-scene#launching-fusion
 
-
 using Fusion;
 using UnityEngine;
 

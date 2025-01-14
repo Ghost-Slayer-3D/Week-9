@@ -1,11 +1,11 @@
 using System;
 using UnityEngine;
 
-
 /**
  * From Fusion tutorial https://doc.photonengine.com/fusion/current/tutorials/shared-mode-basics/3-movement-and-camera
  */
-public class FirstPersonCamera: MonoBehaviour {
+public class FirstPersonCamera : MonoBehaviour
+{
     [SerializeField] float MouseSensitivity = 10f;
     [SerializeField] float clampRotationAngle = 45f;
 
@@ -13,11 +13,14 @@ public class FirstPersonCamera: MonoBehaviour {
     private float horizontalRotation;
 
     private Transform target;
-    internal void SetTarget(Transform transform) {
+
+    internal void SetTarget(Transform transform)
+    {
         this.target = transform;
     }
 
-    void LateUpdate() {
+    void LateUpdate()
+    {
         if (target == null) return;
 
         transform.position = target.position;

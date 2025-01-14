@@ -70,7 +70,7 @@ public class SpawningLauncher : EmptyLauncher
             return;
         }
 
-        if(gunBuffSpawnPoint == null || _gunBuffPrefab == null)
+        if (gunBuffSpawnPoint == null || _gunBuffPrefab == null)
         {
             Debug.LogError("Gun buff spawn point or prefab is not assigned!");
             return;
