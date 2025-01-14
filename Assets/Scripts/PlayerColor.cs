@@ -47,9 +47,9 @@ public class PlayerColor : NetworkBehaviour
 
                 // Generate random color with full opacity
                 var randomColor = new Color(
-                    Random.Range(0f, 1f), 
-                    Random.Range(0f, 1f), 
-                    Random.Range(0f, 1f), 
+                    Random.Range(0f, 1f),
+                    Random.Range(0f, 1f),
+                    Random.Range(0f, 1f),
                     AlphaChannel
                 );
 
