@@ -4,14 +4,21 @@ using UnityEngine.InputSystem;
 
 public class RaycastAttack : NetworkBehaviour
 {
-    [SerializeField] int Damage = 10; // Base damage
-    [SerializeField] InputAction attack;
-    [SerializeField] InputAction attackLocation;
+    [SerializeField, Tooltip("Base damage inflicted by the attack")]
+    private int damage = 10; // Replaced 'Damage' to align with naming conventions.
 
-    [SerializeField] float shootDistance = 5f;
-    [Networked] private bool HasGunBuff { get; set; } = false; // Tracks gun buff activation
+    [SerializeField, Tooltip("Distance the raycast can travel")]
+    private float shootDistance = 5f;
 
-    private bool _attackPressed;
+    [SerializeField] private InputAction attack;
+    [SerializeField] private InputAction attackLocation;
+
+    [Networked, Tooltip("Tracks whether the gun buff is active")]
+    private bool hasGunBuff { get; set; } = false;
+
+    private bool attackPressed;
+
+    private const int DamageMultiplierWithGunBuff = 4; // Multiplier for damage when gun buff is active
 
     private void OnEnable()
     {
@@ -44,7 +51,7 @@ public class RaycastAttack : NetworkBehaviour
 
         if (attack.WasPerformedThisFrame())
         {
-            _attackPressed = true;
+            attackPressed = true;
         }
     }
 
@@ -52,10 +59,10 @@ public class RaycastAttack : NetworkBehaviour
     {
         if (!HasStateAuthority) return;
 
-        if (_attackPressed)
+        if (attackPressed)
         {
             PerformRaycast();
-            _attackPressed = false;
+            attackPressed = false;
         }
     }
 
@@ -96,13 +103,13 @@ public class RaycastAttack : NetworkBehaviour
     {
         if (HasStateAuthority)
         {
-            HasGunBuff = true;
+            hasGunBuff = true;
             Debug.Log("Gun buff activated! Damage will be increased.");
         }
     }
 
     private int CalculateDamage()
     {
-        return HasGunBuff ? Damage * 4 : Damage; // Quadruple damage if gun buff is active
+        return hasGunBuff ? damage * DamageMultiplierWithGunBuff : damage;
     }
 }

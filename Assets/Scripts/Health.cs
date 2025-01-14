@@ -3,17 +3,21 @@ using UnityEngine;
 
 public class Health : NetworkBehaviour
 {
-    [SerializeField] NumberField HealthDisplay;
+    [SerializeField, Tooltip("UI element to display health")]
+    private NumberField healthDisplay;
 
-    [Networked] public int NetworkedHealth { get; set; } = 100;
-    [Networked] public bool HasShield { get; set; } = false;
+    [Networked, Tooltip("Initial health of the player")]
+    public int NetworkedHealth { get; set; } = 100;
+
+    [Networked, Tooltip("Whether the player has an active shield")]
+    public bool HasShield { get; set; } = false;
 
     private ChangeDetector _changes;
 
     public override void Spawned()
     {
         _changes = GetChangeDetector(ChangeDetector.Source.SimulationState);
-        HealthDisplay.SetNumber(NetworkedHealth);
+        healthDisplay.SetNumber(NetworkedHealth);
     }
 
     public override void Render()
@@ -22,7 +26,7 @@ public class Health : NetworkBehaviour
         {
             if (change == nameof(NetworkedHealth))
             {
-                HealthDisplay.SetNumber(NetworkedHealth);
+                healthDisplay.SetNumber(NetworkedHealth);
             }
         }
     }

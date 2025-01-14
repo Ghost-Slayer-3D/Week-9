@@ -6,8 +6,11 @@ using UnityEngine;
  */
 public class FirstPersonCamera : MonoBehaviour
 {
-    [SerializeField] float MouseSensitivity = 10f;
-    [SerializeField] float clampRotationAngle = 45f;
+    [SerializeField, Tooltip("Sensitivity of mouse movement")]
+    private float mouseSensitivity = 10f;
+
+    [SerializeField, Tooltip("Maximum angle to clamp vertical rotation")]
+    private float clampRotationAngle = 45f;
 
     private float verticalRotation;
     private float horizontalRotation;
@@ -28,10 +31,10 @@ public class FirstPersonCamera : MonoBehaviour
         float mouseX = Input.GetAxis("Mouse X");
         float mouseY = Input.GetAxis("Mouse Y");
 
-        verticalRotation -= mouseY * MouseSensitivity;
+        verticalRotation -= mouseY * mouseSensitivity;
         verticalRotation = Mathf.Clamp(verticalRotation, -clampRotationAngle, clampRotationAngle);
 
-        horizontalRotation += mouseX * MouseSensitivity;
+        horizontalRotation += mouseX * mouseSensitivity;
         transform.rotation = Quaternion.Euler(verticalRotation, horizontalRotation, 0);
     }
 }

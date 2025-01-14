@@ -3,10 +3,14 @@ using UnityEngine;
 
 public class BallSpawner : NetworkBehaviour
 {
-    [Networked] private TickTimer spawnTimer { get; set; }
+    [Networked, Tooltip("Timer for spawning balls")]
+    private TickTimer spawnTimer { get; set; }
 
-    [SerializeField] float timeBetweenSpawns = 1f;
-    [SerializeField] NetworkObject prefabToSpawn;
+    [SerializeField, Tooltip("Time interval between ball spawns in seconds")]
+    private float timeBetweenSpawns = 1f;
+
+    [SerializeField, Tooltip("Prefab to spawn as a ball")]
+    private NetworkObject prefabToSpawn;
 
     public override void Spawned()
     {

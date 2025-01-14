@@ -35,7 +35,7 @@ public class SpawningLauncher : EmptyLauncher
             _spawnedCharacters.Add(player, networkPlayerObject);
 
             // Spawn power-ups when the first player joins (server-side only)
-            if (runner.IsServer && _spawnedCharacters.Count >= 0)
+            if (runner.IsServer && _spawnedCharacters.Count == 1) // Magic number 0 replaced with context
             {
                 Debug.Log("First player joined, spawning power-ups...");
                 SpawnPowerUps(runner);

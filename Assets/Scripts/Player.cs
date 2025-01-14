@@ -5,11 +5,17 @@ public class Player : NetworkBehaviour
 {
     private CharacterController _cc;
 
-    [SerializeField] float speed = 5f;
-    [SerializeField] GameObject ballPrefab;
+    [SerializeField, Tooltip("Base movement speed of the player")]
+    private float speed = 5f;
 
-    [Networked] public int Score { get; set; } = 0;
-    [Networked] public bool HasSpeedBoost { get; set; } = false;
+    [SerializeField, Tooltip("Prefab for the ball to spawn when shooting")]
+    private GameObject ballPrefab;
+
+    [Networked, Tooltip("Player's current score")]
+    public int Score { get; set; } = 0;
+
+    [Networked, Tooltip("Indicates if the player has a speed boost")]
+    public bool HasSpeedBoost { get; set; } = false;
 
     private Camera firstPersonCamera;
 

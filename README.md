@@ -1,14 +1,18 @@
-<div dir='rtl' lang='he'>
+# Multiplayer Fusion Unity 3D Project
 
-# Multiplayer games using Photon Fusion 2
+https://gman17.itch.io/Week9
 
-The code is adapted from two tutorials:
+## Overview
+This is a simple multiplayer game built with Unity 3D and Photon Fusion. It demonstrates basic multiplayer features like spawning, power-ups, and combat mechanics.
 
-* [Fusion Host Mode Tutorial](https://doc.photonengine.com/fusion/current/tutorials/host-mode-basics).
-* [Fusion Shared Mode Tutorial](https://doc.photonengine.com/fusion/current/tutorials/shared-mode-basics).
+## Features
+- Smooth player movement with first-person controls.
+- Combat system using raycast attacks.
+- Power-ups (e.g., shield, gun buff) with spawn points.
+- Dynamic player color customization.
+- Networked scoring and player synchronization.
 
-IMPORTANT: Currently, I could use WebGL only with Shared mode. If you start the game on the web, please click the "Shared" button.
-
-* WebGL builds work better on Chrome (there is probably some bug in Firefox).
-
-</div>
+## Setup
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
